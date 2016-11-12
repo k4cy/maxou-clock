@@ -1,0 +1,6 @@
+[Service]
+ExecStart=/home/pi/maxclock.py
+User=pi
+
+[Install]
+WantedBy=multi-user.target
