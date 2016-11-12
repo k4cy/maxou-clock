@@ -1,5 +1,5 @@
 [Service]
-ExecStart=/home/pi/maxclock.py
+ExecStart=/home/pi/maxou-clock/bin/maxou-clock.py
 User=pi
 
 [Install]
