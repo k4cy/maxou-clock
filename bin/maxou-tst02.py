@@ -33,7 +33,10 @@ class MaxouClock():
       self.stdin_path = '/dev/null'
       self.stdout_path = '/dev/tty'
       self.stderr_path = '/dev/tty'
-      self.pidfile_path =  os.path.realpath(os.path.dirname(__file__))+'/../run/maxou-clock.pid'
+      pidpath = os.path.realpath(os.path.dirname(__file__))+'/../run'
+      if not os.path.exists(pidpath):
+        os.makedirs(pidpath)
+      self.pidfile_path =  pidpath+'/maxou-clock.pid'
       self.pidfile_timeout = 5
     def run(self):
       logger.info("Initializing device") 
@@ -77,6 +80,10 @@ if __name__ == "__main__":
   # parsing arguments
   args = parser.parse_args()
 
+  logpath = os.path.realpath(os.path.dirname(__file__))+"/../log"
+  if not os.path.exists(logpath):
+    os.makedirs(logpath)
+
   logger = logging.getLogger("MaxouClock")
   if args.debug:
     logger.setLevel(logging.DEBUG)
@@ -84,7 +91,7 @@ if __name__ == "__main__":
     logger.setLevel(logging.INFO)
 
   formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-  handler = logging.FileHandler(os.path.realpath(os.path.dirname(__file__))+"/../log/maxou-clock.log")
+  handler = logging.FileHandler(logpath+"/maxou-clock.log")
   handler.setFormatter(formatter)
   logger.addHandler(handler)
 
