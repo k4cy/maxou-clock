@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#ATTENTION ENCODATE UTF-8 IMPERATIF
+#SINON CA NE DEMARRE PAS...
+
 import re
 import time
 import argparse
